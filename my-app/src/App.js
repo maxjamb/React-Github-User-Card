@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
 import axios from "axios";
+import { render } from "react-dom";
 import Card from "./Components/card";
 
-function App() {
-  const [users, setUsers] = useState();
-  useEffect(() => {
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      users: []
+    };
+  }
+  componentDidMount() {
     axios
       .get("https://api.github.com/users/maxjamb/followers")
       .then(res => {
         console.log(res);
-        setUsers(res.data);
+        this.setState({ users: res.data });
       })
       .catch(error => {
         console.log("data not returned", error);
       });
-  }, []);
-  return (
-    <div className="App">
-      {users
-        ? users.map(user => {
-            return <Card user={user} />;
-          })
-        : []}
-    </div>
-  );
+  }
+  render() {
+    return (
+      <div className="App">
+        {this.state.users
+          ? this.state.users.map(user => {
+              return <Card users={user} />;
+            })
+          : null}
+      </div>
+    );
+  }
 }
-
 export default App;

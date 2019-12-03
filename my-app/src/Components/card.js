@@ -2,7 +2,7 @@ import React from "react";
 import GitHubCalendar from "github-calendar";
 
 const Card = props => {
-  if (props.user !== null) {
+  if (props.users !== null) {
     const {
       avatar_url,
       login,
@@ -13,7 +13,9 @@ const Card = props => {
       following,
       bio,
       username
-    } = props.user;
+    } = props.users;
+    console.log(followers);
+
     // console.log("calendar", `.card[data-id="${props.user.login}"] .calendar`);
     // GitHubCalendar(`.card[data-id="${props.user.login}"] .calendar`, username, {
     //   responsive: true
