@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       {users
         ? users.map(user => {
-            return <h1>{user.login}</h1>;
+            return <UserCard user={user} />;
           })
         : []}
     </div>
