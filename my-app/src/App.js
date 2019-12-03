@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./App.css";
+import Card from "./Components/card";
 
 function App() {
   const [users, setUsers] = useState();
@@ -19,7 +19,7 @@ function App() {
     <div className="App">
       {users
         ? users.map(user => {
-            return <UserCard user={user} />;
+            return <Card user={user} />;
           })
         : []}
     </div>
